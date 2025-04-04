@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотоэффект и гипотеза Планка</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #5e1f83;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+footer {
+    background-color: #55188f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Стили для разделов */
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+.effect-image, .planck-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+
+#energy-calculation {
+    margin-top: 30px;
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+#graph-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+
+#light-effect {
+    margin-top: 30px;
+    background-color: #ffebee;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #6e11bb;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Для крупных экранов */
+.info, .calculator, .graph, .tasks {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    font-size: 1em;
+}
+
+/* Стили для кнопок */
+button {
+    background-color: #6b0ee4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #330055;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    input, button {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .info, .calculator, .graph, .tasks {
+        padding: 10px;
+    }
+
+    .task {
+        margin-bottom: 15px;
+    }
+}
+
+/* Для очень маленьких экранов (мобильные телефоны) */
+@media (max-width: 480px) {
+    header {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    input, button {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+
+    .info, .calculator, .graph, .tasks {
+        padding: 8px;
+    }
+
+    .task {
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>Фотоэффект и гипотеза Планка</h1>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Что такое фотоэффект?</h2>
+            <p>
+                Фотоэффект — это явление, при котором из вещества выбиваются электроны под действием света. Этот процесс был открыт в 1887 году Генрихом Герцем и объяснён Альбертом Эйнштейном в 1905 году. Эйнштейн объяснил фотоэффект как взаимодействие фотонов с электронами вещества.
+            </p>
+            <img src="https://gsalvatovallverdu.gitlab.io/img/aboveth.gif" alt="Иллюстрация фотоэффекта" class="effect-image">
+        </section>
+
+        <section class="planck">
+            <h2>Гипотеза Планка</h2>
+            <p>
+                В 1900 году Макс Планк предложил гипотезу о квантовании энергии, которая стала основой квантовой теории. Согласно Планку, энергия может быть передана только дискретно, в виде квантов (фотонов). Эта гипотеза объяснила не только фотоэффект, но и многие другие явления в физике.
+            </p>
+            <p>
+                Планк предложил формулу для энергии фотонов: 
+                <em>E = h * f</em>, где <strong>h</strong> — постоянная Планка, а <strong>f</strong> — частота света.
+            </p>
+            
+        </section>
+
+        <section class="quantum">
+            <h2>Как работают фотоны?</h2>
+            <p>
+                Фотоны — это частицы света, которые несут определённую энергию. Энергия фотона пропорциональна его частоте. Чем выше частота света, тем больше энергия фотона. Свет, например, синих и фиолетовых оттенков имеет большую частоту и, следовательно, большую энергию, чем свет красного цвета.
+            </p>
+            <div id="energy-calculation">
+                <h3>Задание 1: Калькулятор энергии фотона</h3>
+                <label for="frequency">Частота (Гц):</label>
+                <input type="number" id="frequency" placeholder="Введите частоту в Гц">
+                <button onclick="calculateEnergy()">Рассчитать энергию</button>
+                <p id="result">Энергия фотона: <span id="energy">0</span> Дж</p>
+            </div>
+        </section>
+        <main>
+            <section class="info">
+                <h2>О фотоэффекте</h2>
+                <p>Фотоэффект — явление, при котором свет вызывает выбивание электронов из вещества.</p>
+                <p>Энергия фотона определяется формулой: <strong>E = h * f</strong>, где:</p>
+                <ul>
+                    <li><strong>E</strong> — энергия фотона (в Джоулях),</li>
+                    <li><strong>h</strong> — постоянная Планка (6.62607015 × 10⁻³⁴ Дж·с),</li>
+                    <li><strong>f</strong> — частота света (в Гц).</li>
+                </ul>
+            </section>
+    
+            <section class="calculator">
+                <h2>Расчет энергии фотона</h2>
+                <p>Введите частоту света для расчета энергии фотона:</p>
+                <input type="number" id="frequency" placeholder="Частота (Гц)">
+                <button onclick="calculateEnergy()">Рассчитать энергию</button>
+                <p id="energy">Энергия фотона: </p>
+            </section>
+    
+            <section class="graph">
+           
+        <footer>
+            <p>© 2025 Фотоэффект и гипотеза Планка</p>
+        </footer>
+    </body>
+    </html>
+
+
+
+
+
+<script>
+
+function calculateEnergy() {
+    const frequency = document.getElementById('frequency').value;
+    const planckConstant = 6.62607015e-34; // постоянная Планка в Дж·с
+
+    if (frequency > 0) {
+        const energy = planckConstant * frequency;
+        document.getElementById('energy').textContent = energy.toExponential(4) + " Дж";
+    } else {
+        document.getElementById('energy').textContent = "Введите положительное значение для частоты";
+    }
+}
+
+</script>
+</html>
